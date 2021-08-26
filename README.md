@@ -1,0 +1,2 @@
+# AmmBot
+Hi, why AMM? 😢🔫

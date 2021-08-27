@@ -7,5 +7,5 @@ dotnet publish AmmBot.Service\AmmBot.Service.csproj --output bin -c Release ^
     && copy uninstall.bat bin\uninstall.bat > nul ^
     && copy start.bat bin\start.bat > nul ^
     && copy stop.bat bin\stop.bat > nul ^
-	&& del bin\appsettings.Development.json > nul ^
+    && del bin\appsettings.Development.json > nul ^
     && del /Q bin\*.pdb > nul

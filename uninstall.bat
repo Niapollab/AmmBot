@@ -1,3 +1,3 @@
 @echo off
 chcp 1251 > nul
-sc delete "VK AMM Bot"
+sc stop "VK AMM Bot" & sc delete "VK AMM Bot"

@@ -48,15 +48,18 @@ namespace AmmBot.Core.Extensions
             {
                 Updates updates = await bot.GetLongPollUpdatesAsync(serverData, wait, version, cancellationToken);
 
-                if (updates.Failed == 1)
+                switch (updates.Failed)
                 {
-                    if (updates.Failed == 2 || updates.Failed == 3)
+                    case 1:
+                        serverData.Ts = long.Parse(updates.Ts);
+                        continue;
+                    case 2:
+                    case 3:
                         serverData = await bot.GetLongPollServerAsync(groupId, cancellationToken);
-                    continue;
+                        continue;
+                    default:
+                        break;
                 }
-
-                if (updates.Items == null)
-                    continue;
 
                 foreach (UpdateData update in updates.Items)
                 {

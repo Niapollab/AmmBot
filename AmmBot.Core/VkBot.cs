@@ -16,7 +16,7 @@ namespace AmmBot.Core
 {
     public class VkBot : IVkBot
     {
-        public static readonly Lazy<JsonSerializerOptions> s_JsonSerializerOptions = new Lazy<JsonSerializerOptions>(() => new JsonSerializerOptions()
+        public static readonly Lazy<JsonSerializerOptions> s_JsonSerializerOptions = new(() => new JsonSerializerOptions()
         {
             Converters = {
                 new UpdateDataConverter()
@@ -105,7 +105,7 @@ namespace AmmBot.Core
         {
             _disposed = true;
             _client?.Dispose();
-            GC.SuppressFinalize(true);
+            GC.SuppressFinalize(this);
         }
     }
 }
